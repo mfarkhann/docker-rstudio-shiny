@@ -1,4 +1,4 @@
-FROM rocker/verse:3.3.3
+FROM rocker/verse
 MAINTAINER "Farkhan Novianto" farkhan.novianto@gmail.com
 
 ## Install Shiny
