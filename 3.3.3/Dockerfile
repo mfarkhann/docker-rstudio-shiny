@@ -44,7 +44,7 @@ RUN  . /etc/environment \
     --repos 'http://www.bioconductor.org/packages/release/bioc' \
     --repos $MRAN \ 
     --deps TRUE \
-    earth sparklyr nloptr lavaan googlesheets caroline networkD3 Rfacebook forecast BoomSpikeSlab AnomalyDetection 
+    earth sparklyr nloptr lavaan googlesheets caroline networkD3 Rfacebook forecast anomalyDetection 
 
 # Install R Packages from Github
 RUN R -e "devtools::install_github('google/CausalImpact')"
