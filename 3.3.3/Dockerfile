@@ -48,7 +48,7 @@ RUN  . /etc/environment \
 
 # Install R Packages from Github
 RUN R -e "devtools::install_github('google/CausalImpact')"
-RUN R -e "devtools::install_github("rstudio/pool")"
+RUN R -e "devtools::install_github('rstudio/pool')"
 
 
 EXPOSE 3838 8787
