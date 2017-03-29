@@ -8,6 +8,7 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     pandoc \
     pandoc-citeproc \
     libcurl4-gnutls-dev \
+    supervisor \
   && wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubuntu-12.04/x86_64/VERSION -O "version.txt" \
   && VERSION=$(cat version.txt) \
   && wget --no-verbose "https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubuntu-12.04/x86_64/shiny-server-$VERSION-amd64.deb" -O ss-latest.deb \
@@ -19,20 +20,21 @@ RUN apt-get -y --no-install-recommends install \
     default-jdk \
     cron \
     libgmp3-dev \
+    libicu-dev \
+    libmpfr-dev \
     libv8-3.14-dev \
-    supervisor \
   && rm -rf /var/lib/apt/lists/*
 
 ## Install R Packages
-# Install R Packages for Shiny Dashboard
+# Install R Packages for Dashboard and Visualization
 RUN  . /etc/environment \
     && install2.r --error \
     --repos 'http://www.bioconductor.org/packages/release/bioc' \
     --repos $MRAN \ 
     --deps TRUE \
-    shinydashboard rhandsontable shinyjs DT plotly dygraphs d3heatmap kohonen
+    shinydashboard rhandsontable shinyjs DT plotly dygraphs d3heatmap kohonen networkD3
 
-# Install R Packages For Scheduller
+# Install R Packages For Scheduler
 RUN  . /etc/environment \
     && install2.r --error \
     --repos 'http://www.bioconductor.org/packages/release/bioc' \
@@ -40,24 +42,25 @@ RUN  . /etc/environment \
     --deps TRUE \
     shinyFiles cronR
 
-# Install Aditional R Packages
+# Install R Packages For API and Data pre Processing
 RUN  . /etc/environment \
     && install2.r --error \
     --repos 'http://www.bioconductor.org/packages/release/bioc' \
     --repos $MRAN \ 
     --deps TRUE \
-    earth sparklyr nloptr lavaan googlesheets caroline networkD3 Rfacebook forecast 
+    Rfacebook XLConnect googlesheets googleAnalyticsR sparklyr 
 
-RUN  . /etc/environment \
-    && install2.r --error \
-    --repos 'http://www.bioconductor.org/packages/release/bioc' \
-    --repos $MRAN \ 
-    --deps TRUE \
-    anomalyDetection BoomSpikeSlab
-
-# Install R Packages from Github
-RUN R -e "devtools::install_github('google/CausalImpact')"
 RUN R -e "devtools::install_github('rstudio/pool')"
+
+# Install R Packages for Analytics
+RUN  . /etc/environment \
+    && install2.r --error \
+    --repos 'http://www.bioconductor.org/packages/release/bioc' \
+    --repos $MRAN \ 
+    --deps TRUE \
+    earth nloptr lavaan caroline forecast anomalyDetection BoomSpikeSlab mlogit tree e1071 HH lsa kappalab PerformanceAnalytics 
+
+RUN R -e "devtools::install_github('google/CausalImpact')"
 
 # Setting Supervisor
 RUN mkdir -p /var/log/supervisor
