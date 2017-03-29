@@ -44,7 +44,11 @@ RUN  . /etc/environment \
     --repos 'http://www.bioconductor.org/packages/release/bioc' \
     --repos $MRAN \ 
     --deps TRUE \
-    earth sparklyr nloptr lavaan googlesheets caroline networkD3 Rfacebook forecast anomalyDetection 
+    earth sparklyr nloptr lavaan googlesheets caroline networkD3 Rfacebook forecast 
+
+RUN  . /etc/environment \
+    && install2.r --error \
+    anomalyDetection 
 
 # Install R Packages from Github
 RUN R -e "devtools::install_github('google/CausalImpact')"
