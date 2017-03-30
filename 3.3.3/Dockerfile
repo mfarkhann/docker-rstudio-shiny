@@ -22,6 +22,8 @@ RUN apt-get -y --no-install-recommends install \
     libgmp3-dev \
     libicu-dev \
     libmpfr-dev \
+    libtcl8.5 \
+    libtk8.5 \
     libv8-3.14-dev \
   && rm -rf /var/lib/apt/lists/*
 
