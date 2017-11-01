@@ -1,4 +1,4 @@
-FROM rocker/verse
+FROM rocker/verse:3.4.2
 MAINTAINER "Farkhan Novianto" farkhan.novianto@gmail.com
 
 ## Install Shiny and cron from https://github.com/rocker-org/rocker-versioned/tree/master/rstudio
