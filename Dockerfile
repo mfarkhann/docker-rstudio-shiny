@@ -34,7 +34,7 @@ RUN  . /etc/environment \
     # For Dashboard and Visualization
     shinydashboard rhandsontable shinyjs plotly dygraphs d3heatmap kohonen networkD3 ggvis flexdashboard shinyBS shinythemes colourpicker ggExtra ggmap ggplot2movies rpivotTable kableExtra sparkline billboarder \ 
     # For Scheduler
-    shinyFiles cronR \
+    shinyFiles cronR here \
     # For API and Data pre Processing
     Rfacebook XLConnect googlesheets googleAnalyticsR sparklyr pool bcrypt instaR gtrendsR aws.s3 V8 js openxlsx maptools aws.ec2metadata \
     # For Analytics
