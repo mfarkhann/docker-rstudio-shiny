@@ -32,7 +32,7 @@ RUN  . /etc/environment \
     --repos $MRAN \ 
     #--deps TRUE \
     # For Dashboard and Visualization
-    shinydashboard rhandsontable shinyjs plotly dygraphs d3heatmap kohonen networkD3 ggvis flexdashboard shinyBS shinythemes colourpicker ggExtra ggmap ggplot2movies rpivotTable kableExtra sparkline billboarder \ 
+    shinydashboard rhandsontable shinyjs plotly dygraphs d3heatmap kohonen networkD3 ggvis flexdashboard shinyBS shinythemes colourpicker ggExtra ggmap ggplot2movies rpivotTable kableExtra sparkline billboarder shinycssloaders \ 
     # For Scheduler
     shinyFiles cronR here \
     # For API and Data pre Processing
