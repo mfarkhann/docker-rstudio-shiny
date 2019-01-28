@@ -32,7 +32,7 @@ RUN  . /etc/environment \
     --repos $MRAN \ 
     #--deps TRUE \
     # For Dashboard and Visualization
-    shinydashboard rhandsontable shinyjs plotly dygraphs d3heatmap kohonen networkD3 ggvis flexdashboard shinyBS shinythemes colourpicker ggExtra ggmap ggplot2movies rpivotTable kableExtra sparkline billboarder shinycssloaders \ 
+    shinydashboard rhandsontable shinyjs plotly dygraphs d3heatmap kohonen networkD3 ggvis flexdashboard shinyBS shinythemes colourpicker ggExtra ggmap ggplot2movies rpivotTable kableExtra sparkline billboarder \ 
     # For Scheduler
     shinyFiles cronR here \
     # For API and Data pre Processing
@@ -45,7 +45,7 @@ RUN  . /etc/environment \
 RUN Rscript -e "devtools::install_github('tidyverse/googlesheets4')"
 RUN Rscript -e "devtools::install_github('MarkEdmondson1234/googleID')"
 RUN Rscript -e "devtools::install_github('sicarul/redshiftTools')"
-
+RUN Rscript -e "devtools::install_github('andrewsali/shinycssloaders')"
     
 ## ~/ShinyApps for per User Setting and Copy Shiny Examples to Home Folder and Remove temp files
 RUN yes | /opt/shiny-server/bin/deploy-example user-dirs \
