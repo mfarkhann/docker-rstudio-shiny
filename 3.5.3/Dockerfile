@@ -38,12 +38,10 @@ RUN  . /etc/environment \
     # For API and Data pre Processing
     Rfacebook XLConnect googlesheets googleAnalyticsR sparklyr pool bcrypt instaR gtrendsR aws.s3 V8 js openxlsx maptools aws.ec2metadata \
     # For Analytics
-    earth nloptr lavaan caroline forecast anomalyDetection BoomSpikeSlab mlogit tree e1071 HH lsa kappalab PerformanceAnalytics CausalImpact \
+    earth nloptr lavaan caroline forecast BoomSpikeSlab mlogit tree e1071 HH lsa kappalab PerformanceAnalytics CausalImpact \
     # Remove temp file
     && rm -rf /*.gz /tmp/*.rds /tmp/*.gz /tmp/downloaded_packages/
     
-RUN Rscript -e "devtools::install_github('tidyverse/googlesheets4')"
-RUN Rscript -e "devtools::install_github('MarkEdmondson1234/googleID')"
 RUN Rscript -e "devtools::install_github('sicarul/redshiftTools')"
 RUN Rscript -e "devtools::install_github('andrewsali/shinycssloaders')"
 
