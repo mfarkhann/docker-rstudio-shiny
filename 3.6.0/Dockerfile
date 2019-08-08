@@ -17,15 +17,14 @@ RUN  . /etc/environment \
     --repos 'http://www.bioconductor.org/packages/release/bioc' \
     --repos $MRAN \ 
     #--deps TRUE \
-    Boom  \
     # For Dashboard and Visualization
     shinydashboard rhandsontable shinyjs plotly dygraphs d3heatmap kohonen networkD3 ggvis flexdashboard shinyBS shinythemes colourpicker ggExtra ggmap ggplot2movies rpivotTable kableExtra sparkline billboarder shinycssloaders \ 
     # For Scheduler
     shinyFiles cronR here \
     # For API and Data pre Processing
-    Rfacebook XLConnect googlesheets googleAnalyticsR sparklyr pool bcrypt instaR gtrendsR aws.s3 V8 js openxlsx maptools aws.ec2metadata redshiftTools \
+    Rfacebook XLConnect googlesheets googleAnalyticsR sparklyr pool bcrypt instaR gtrendsR aws.s3 V8 js openxlsx maptools aws.ec2metadata redshiftTools furrr \
     # For Analytics
-    earth nloptr lavaan caroline forecast BoomSpikeSlab mlogit tree e1071 HH lsa kappalab PerformanceAnalytics CausalImpact \
+    earth nloptr lavaan caroline forecast mlogit tree e1071 HH lsa kappalab PerformanceAnalytics \
     # Remove temp file
     && rm -rf /*.gz /tmp/*.rds /tmp/*.gz /tmp/downloaded_packages/
         
