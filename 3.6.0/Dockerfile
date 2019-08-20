@@ -22,7 +22,7 @@ RUN  . /etc/environment \
     # For Scheduler
     shinyFiles cronR here \
     # For API and Data pre Processing
-    Rfacebook XLConnect googlesheets googleAnalyticsR sparklyr pool bcrypt instaR gtrendsR aws.s3 V8 js openxlsx maptools aws.ec2metadata redshiftTools furrr \
+    Rfacebook XLConnect googledrive googlesheets googleAnalyticsR sparklyr pool bcrypt instaR gtrendsR aws.s3 V8 js openxlsx maptools aws.ec2metadata redshiftTools furrr \
     # For Analytics
     earth nloptr lavaan caroline forecast mlogit tree e1071 HH lsa kappalab PerformanceAnalytics \
     # Remove temp file
