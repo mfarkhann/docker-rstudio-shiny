@@ -3,25 +3,11 @@ MAINTAINER "Farkhan Novianto" farkhan.novianto@gmail.com
 
 ## Install Shiny and cron from https://github.com/rocker-org/rocker-versioned/tree/master/rstudio
 RUN export ADD=shiny && bash /etc/cont-init.d/add \
-    && apt-get update && apt-get -y --no-install-recommends install cron \
-    && mkdir -p /etc/services.d/cron \
-    && echo '#!/bin/bash \
-           \n exec cron -f -L 15' \
-           > /etc/services.d/cron/run
+    && apt-get update 
 
 # Install packages for supporting R packages
 RUN apt-get -y --no-install-recommends install \
-#     libgmp3-dev \
-#     libicu-dev \
     libmpfr-dev \
-#     libtcl8.5 \
-#     libtk8.5 \
-#     libv8-3.14-dev \
-#     libudunits2-dev \
-#     libproj-dev \
-#     libgdal-dev \
-#     tcl8.5-dev \
-#     tk8.5-dev \
   && rm -rf /var/lib/apt/lists/*
 
 
@@ -32,19 +18,16 @@ RUN  . /etc/environment \
     --repos $MRAN \ 
     #--deps TRUE \
     # For Dashboard and Visualization
-    shinydashboard rhandsontable shinyjs plotly dygraphs d3heatmap kohonen networkD3 ggvis flexdashboard shinyBS shinythemes colourpicker ggExtra ggmap ggplot2movies rpivotTable kableExtra sparkline billboarder \ 
+    shinydashboard rhandsontable shinyjs plotly dygraphs d3heatmap kohonen networkD3 ggvis flexdashboard shinyBS shinythemes colourpicker ggExtra ggmap ggplot2movies rpivotTable kableExtra sparkline billboarder shinycssloaders DT \ 
     # For Scheduler
     shinyFiles cronR here \
     # For API and Data pre Processing
-    Rfacebook XLConnect googlesheets googleAnalyticsR sparklyr pool bcrypt instaR gtrendsR aws.s3 V8 js openxlsx maptools aws.ec2metadata \
+    Rfacebook XLConnect googledrive googlesheets googleAnalyticsR sparklyr pool bcrypt instaR gtrendsR aws.s3 V8 js openxlsx maptools aws.ec2metadata redshiftTools furrr RPostgreSQL\
     # For Analytics
-    earth nloptr lavaan caroline forecast BoomSpikeSlab mlogit tree e1071 HH lsa kappalab PerformanceAnalytics CausalImpact \
+    earth nloptr lavaan caroline forecast mlogit tree e1071 HH lsa kappalab PerformanceAnalytics \
     # Remove temp file
     && rm -rf /*.gz /tmp/*.rds /tmp/*.gz /tmp/downloaded_packages/
-    
-RUN Rscript -e "devtools::install_github('sicarul/redshiftTools')"
-RUN Rscript -e "devtools::install_github('andrewsali/shinycssloaders')"
-    
+        
 ## ~/ShinyApps for per User Setting and Copy Shiny Examples to Home Folder and Remove temp files
 RUN yes | /opt/shiny-server/bin/deploy-example user-dirs \
     && mkdir /home/ShinyApps/ \
