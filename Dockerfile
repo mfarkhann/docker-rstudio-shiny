@@ -35,6 +35,9 @@ RUN yes | /opt/shiny-server/bin/deploy-example user-dirs \
     && mkdir /home/ShinyApps/ \
     && cp -R /usr/local/lib/R/site-library/shiny/examples/* /home/ShinyApps/ 
 
+# Install several packages that still in github
+RUN Rscript -e 'remotes::install_github(c("rich-iannone/blastula", "renkun-ken/formattable", "rstudio/fontawesome", "rstudio/gt"))'
+
 # Set Indonesia Locale    
 RUN sed -i -e 's/# id_ID.UTF-8 UTF-8/id_ID.UTF-8 UTF-8/' /etc/locale.gen && \
     locale-gen
