@@ -17,8 +17,10 @@ RUN  . /etc/environment \
     --repos 'http://www.bioconductor.org/packages/release/bioc' \
     --repos $MRAN \ 
     #--deps TRUE \
-    # For Dashboard and Visualization
-    shinydashboard rhandsontable shinyjs plotly dygraphs d3heatmap kohonen networkD3 ggvis flexdashboard shinyBS shinythemes colourpicker ggExtra ggmap ggplot2movies rpivotTable kableExtra sparkline billboarder shinycssloaders DT \ 
+    # For Visualization
+    plotly dygraphs d3heatmap kohonen networkD3 ggvis colourpicker ggExtra ggmap ggplot2movies ggthemes rpivotTable kableExtra sparkline billboarder DT \
+    # For Dashboard
+    shinydashboard rhandsontable shinyjs flexdashboard shinyBS shinythemes shinycssloaders \ 
     # For Scheduler
     shinyFiles cronR here \
     # For API and Data pre Processing
