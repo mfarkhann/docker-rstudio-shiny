@@ -8,6 +8,8 @@ RUN export ADD=shiny && bash /etc/cont-init.d/add \
 # Install packages for supporting R packages
 RUN apt-get -y --no-install-recommends install \
     libmpfr-dev \
+    # For setup pdf password
+    pdftk \
   && rm -rf /var/lib/apt/lists/*
 
 
