@@ -40,7 +40,7 @@ RUN yes | /opt/shiny-server/bin/deploy-example user-dirs \
     && cp -R /usr/local/lib/R/site-library/shiny/examples/* /home/ShinyApps/ 
 
 # Install several packages that still in github
-RUN Rscript -e 'remotes::install_github(c("renkun-ken/formattable", "rstudio/fontawesome", "rstudio/gt", "dbca-wa/ruODK"))'
+RUN Rscript -e 'remotes::install_github(c("renkun-ken/formattable", "rstudio/fontawesome", "rstudio/gt", "tidyverse/googlesheets4", "dbca-wa/ruODK"))'
 
 
 # Set Indonesia Locale    
