@@ -10,6 +10,8 @@ RUN apt-get -y --no-install-recommends install \
     libmpfr-dev \
     # For setup pdf password
     pdftk \
+    # for googlesheets4
+    libsodium-dev \
     # For gifski
     cargo \ 
   && rm -rf /var/lib/apt/lists/*
@@ -39,8 +41,9 @@ RUN yes | /opt/shiny-server/bin/deploy-example user-dirs \
     && mkdir /home/ShinyApps/ \
     && cp -R /usr/local/lib/R/site-library/shiny/examples/* /home/ShinyApps/ 
 
+
 # Install several packages that still in github
-RUN Rscript -e 'remotes::install_github(c("renkun-ken/formattable", "rstudio/fontawesome", "rstudio/gt", "tidyverse/googlesheets4", "dbca-wa/ruODK"), upgrade = FALSE)'
+RUN Rscript -e 'remotes::install_github(c("r-lib/lifecycle","renkun-ken/formattable", "rstudio/fontawesome", "rstudio/gt", "tidyverse/googlesheets4", "dbca-wa/ruODK"), dependencies = TRUE,  upgrade = FALSE)'
 
 
 # Set Indonesia Locale    
